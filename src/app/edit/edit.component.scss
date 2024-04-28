@@ -1,0 +1,196 @@
+.edit-page {
+  z-index: 1;
+  height: 100vh;
+  min-height: 700px;
+  min-width: 950px;
+  width: 100%;
+  background: linear-gradient(135deg, #fac98e, #91bfff);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .inner-container {
+    width: 80%;
+    height: 80%;
+    position: relative;
+
+    .title {
+      color: #fff;
+      font-size: 28px;
+      margin: 0 0 20px 0;
+    }
+
+    .item-title {
+      color: #fff;
+      font-size: 24px;
+      margin: 0 0 16px 0;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .countdown-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 48px;
+      margin-bottom: 20px;
+    }
+
+    .subtract-button {
+      height: 36px;
+      width: 36px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .subtract-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .add-button {
+      @extend .subtract-button;
+      font-size: 24px;
+    }
+
+    .countdown-label {
+      color: #fff;
+      font-size: 20px;
+      margin-left: 16px;
+    }
+
+    .encouraging-text-input {
+      width: 80%;
+      height: 50px;
+      border-radius: 30px;
+      border: 0;
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 20px;
+      padding: 0 25px;
+      margin-bottom: 20px;
+    }
+
+    .countdown-input {
+      @extend .encouraging-text-input;
+      text-align: center;
+      margin-bottom: 0;
+      width: 40px;
+    }
+
+    .to-dos {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+
+      .add-todo-button {
+        height: 120px;
+        width: 120px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #eee;
+        font-size: 56px;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .add-todo-button:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+    }
+
+    .save-button {
+      background: rgba(255, 255, 255, 0.3) !important;
+      color: #fff;
+      font-size: 24px;
+      padding: 10px 20px 10px 25px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .save-button:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      
+    }
+  }
+}
+
+.add-todo-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 2;
+
+  .add-todo-modal {
+    height: 80vh;
+    width: 45%;
+    border-radius: 20px;
+    background: #fff;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 40px;
+
+    .title {
+      color: #333;
+      font-size: 24px;
+    }
+
+    .saved-item {
+      color: #aaa;
+      font-size: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      button {
+        width: 30px;
+        height: 30px;
+        margin-left: 16px;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+    }
+  }
+}

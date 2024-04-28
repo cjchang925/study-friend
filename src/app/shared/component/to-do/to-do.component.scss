@@ -1,0 +1,63 @@
+.to-do-list {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px 40px;
+
+  .more-items-text {
+    color: #eee;
+    margin: 16px 0 0 0;
+  }
+
+  .to-do-title {
+    width: 160px;
+    margin: 0;
+    color: #eee;
+    margin-bottom: 10px;
+  }
+
+  hr {
+    border: 1px solid #ddd;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .to-do-item {
+    width: 160px;
+    color: #eee;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 16px;
+
+    .check-box {
+      width: 20px !important;
+      height: 20px !important;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      margin-right: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .finished-box {
+        font-size: 20px;
+        height: 16px;
+        width: 16px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 3px;
+      }
+    }
+
+    .content {
+      margin: 0;
+      width: 120px !important;
+      word-wrap: break-word;
+      line-height: 24px;
+    }
+  }
+
+  .to-do-item:hover {
+    cursor: pointer;
+  }
+}

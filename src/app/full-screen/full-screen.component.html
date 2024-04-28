@@ -1,0 +1,94 @@
+<div #firework class="firework" (mousemove)="firework.style.zIndex = '0'"></div>
+
+<div class="full-screen-page" (mousemove)="onMouseMove()">
+  <div class="center-text">
+    <div class="current-time-container" cdkDrag>
+      <div
+        class="subtract-button"
+        (click)="currentTimeFontSize = currentTimeFontSize - 10"
+        [@buttonInOut]="showAdjustingButton"
+      >
+        一
+      </div>
+      <p
+        class="current-time"
+        [ngStyle]="{ 'font-size.px': currentTimeFontSize }"
+      >
+        {{ currentTime }}
+      </p>
+      <div
+        class="add-button"
+        (click)="currentTimeFontSize = currentTimeFontSize + 10"
+        [@buttonInOut]="showAdjustingButton"
+      >
+        +
+      </div>
+    </div>
+    <div class="current-time-container" *ngIf="encouragingText.length" cdkDrag>
+      <div
+        class="subtract-button"
+        (click)="encouragingTextFontSize = encouragingTextFontSize - 10"
+        [@buttonInOut]="showAdjustingButton"
+      >
+        一
+      </div>
+      <p
+        class="encouraging-text"
+        [ngStyle]="{ 'font-size.px': encouragingTextFontSize }"
+      >
+        {{ encouragingText }}
+      </p>
+      <div
+        class="add-button"
+        (click)="encouragingTextFontSize = encouragingTextFontSize + 10"
+        [@buttonInOut]="showAdjustingButton"
+      >
+        +
+      </div>
+    </div>
+    <div
+      class="current-time-container"
+      cdkDrag
+      [@countdownInOut]="countdownState"
+    >
+      <div
+        class="subtract-button"
+        (click)="countdownFontSize = countdownFontSize - 10"
+        [@buttonInOut]="showAdjustingButton"
+      >
+        一
+      </div>
+      <p
+        class="countdown-time"
+        [ngStyle]="{ 'font-size.px': countdownFontSize }"
+      >
+        {{ getRemainingTime() }}
+      </p>
+      <div
+        class="add-button"
+        (click)="countdownFontSize = countdownFontSize + 10"
+        [@buttonInOut]="showAdjustingButton"
+      >
+        +
+      </div>
+    </div>
+    <div class="to-dos">
+      <app-to-do
+        cdkDrag
+        *ngFor="let toDo of toDos"
+        [toDo]="toDo"
+        [disabled]="false"
+      ></app-to-do>
+    </div>
+    <button
+      (click)="toFullScreen()"
+      [@buttonInOut]="showAdjustingButton"
+      class="full-screen-button"
+    >
+      <mat-icon>fullscreen</mat-icon>&nbsp;全螢幕
+    </button>
+    <p class="reminder" [@buttonInOut]="showAdjustingButton">
+      貼心提醒：所有文字和待辦事項都可以自由的拉來拉去喔！
+    </p>
+  </div>
+</div>

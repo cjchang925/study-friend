@@ -1,0 +1,116 @@
+.firework {
+  width: 100%;
+  height: 90vh;
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  z-index: 0;
+}
+
+.full-screen-page {
+  z-index: 1;
+  height: 100vh;
+  min-height: 700px;
+  min-width: 750px;
+  width: 100%;
+  background: linear-gradient(135deg, #fac98e, #91bfff);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .center-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    .full-screen-button {
+      background: rgba(255, 255, 255, 0.3) !important;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px 10px 25px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 80px;
+    }
+
+    .full-screen-button:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .reminder {
+      color: #eee;
+      font-size: 24px;
+      position: absolute;
+      bottom: 0px;
+      margin-bottom: 36px;
+    }
+
+    .current-time-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .current-time {
+      background-image: linear-gradient(135deg, #fea12f, #6daaff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: bolder;
+      font-family: sf-pro-display-bold;
+      margin: 0;
+    }
+
+    .encouraging-text {
+      @extend .current-time;
+    }
+
+    .countdown-time {
+      @extend .encouraging-text;
+    }
+
+    .to-dos {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .subtract-button {
+      height: 36px;
+      width: 36px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .subtract-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .add-button {
+      @extend .subtract-button;
+      font-size: 24px;
+    }
+  }
+}

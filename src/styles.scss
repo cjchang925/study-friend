@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "sf-pro-display-bold";
+  src: url("./assets/fonts/SF-Pro-Display-Bold.otf") format("opentype");
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  -webkit-user-select: none; /* Chrome, Safari, Opera */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Generic */
+}

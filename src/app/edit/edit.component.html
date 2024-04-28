@@ -1,0 +1,164 @@
+<div class="edit-page">
+  <div class="inner-container">
+    <p class="title">可以選擇想要的設定，或是直接按下「建立」！</p>
+    <p class="item-title">倒數計時</p>
+    <div class="countdown-container">
+      <div class="countdown-item">
+        <div
+          class="subtract-button"
+          (click)="
+            countdown.hours = countdown.hours > 0 ? countdown.hours - 1 : 23
+          "
+        >
+          一
+        </div>
+        <input
+          class="countdown-input"
+          [(ngModel)]="countdown.hours"
+          maxlength="2"
+        />
+        <div
+          class="add-button"
+          (click)="
+            countdown.hours = countdown.hours >= 23 ? 0 : countdown.hours + 1
+          "
+        >
+          +
+        </div>
+        <label class="countdown-label">時</label>
+      </div>
+      <div class="countdown-item">
+        <div
+          class="subtract-button"
+          (click)="
+            countdown.minutes =
+              countdown.minutes > 0 ? countdown.minutes - 1 : 59
+          "
+        >
+          一
+        </div>
+        <input
+          class="countdown-input"
+          [(ngModel)]="countdown.minutes"
+          maxlength="2"
+        />
+        <div
+          class="add-button"
+          (click)="
+            countdown.minutes =
+              countdown.minutes >= 59 ? 0 : countdown.minutes + 1
+          "
+        >
+          +
+        </div>
+        <label class="countdown-label">分</label>
+      </div>
+      <div class="countdown-item">
+        <div
+          class="subtract-button"
+          (click)="
+            countdown.seconds =
+              countdown.seconds > 0 ? countdown.seconds - 1 : 59
+          "
+        >
+          一
+        </div>
+        <input
+          class="countdown-input"
+          [(ngModel)]="countdown.seconds"
+          maxlength="2"
+        />
+        <div
+          class="add-button"
+          (click)="
+            countdown.seconds =
+              countdown.seconds >= 59 ? 0 : countdown.seconds + 1
+          "
+        >
+          +
+        </div>
+        <label class="countdown-label">秒</label>
+      </div>
+    </div>
+    <p class="item-title">勵志小語</p>
+    <input
+      class="encouraging-text-input"
+      [(ngModel)]="encouragingText"
+      autofocus
+      maxlength="16"
+    />
+    <p class="item-title">待辦事項</p>
+    <div class="to-dos">
+      <div
+        class="add-todo-button"
+        [style.background]="toDos.length < 4 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'"
+        [style.color]="toDos.length < 4 ? '#eee' : '#ccc'"
+        [style.cursor]="toDos.length < 4 ? 'pointer' : 'not-allowed'"
+        (click)="showAddToDoItemModal = true"
+      >
+        +
+      </div>
+      <app-to-do
+        *ngFor="let toDo of toDos"
+        [toDo]="toDo"
+        [disabled]="true"
+      ></app-to-do>
+    </div>
+    <button class="save-button" (click)="buildScreen()">建立&nbsp;<mat-icon>check</mat-icon></button>
+  </div>
+</div>
+
+<div class="add-todo-container" *ngIf="showAddToDoItemModal">
+  <div class="add-todo-modal">
+    <p class="title">標題<span style="color: red">*</span></p>
+    <mat-form-field color="accent">
+      <mat-label>標題</mat-label>
+      <input matInput [(ngModel)]="toDo.title" autofocus maxlength="16" />
+    </mat-form-field>
+    <p class="title">待辦事項（至多五項）<span style="color: red">*</span></p>
+    <div>
+      <mat-form-field style="width: 85%; margin-right: 30px" color="accent">
+        <mat-label>待辦事項</mat-label>
+        <input matInput [(ngModel)]="toDoItemContent" maxlength="14" />
+      </mat-form-field>
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="send"
+        (click)="addToDoItem()"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+    <div *ngFor="let item of toDo.items; let i = index" class="saved-item">
+      <p>{{ i + 1 }}. {{ item.content }}</p>
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="send"
+        (click)="deleteToDoItem(i)"
+      >
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </div>
+
+    <div class="buttons">
+      <button
+        style="width: 50px"
+        mat-flat-button
+        color="warn"
+        (click)="showAddToDoItemModal = false; refreshToDo()"
+      >
+        取消
+      </button>
+      <button
+        style="width: 50px"
+        mat-flat-button
+        color="accent"
+        (click)="confirmAddingToDoItem()"
+      >
+        確定
+      </button>
+    </div>
+  </div>
+</div>

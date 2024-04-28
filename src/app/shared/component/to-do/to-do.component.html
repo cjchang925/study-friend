@@ -1,0 +1,24 @@
+<div class="to-do-list">
+  <h3 class="to-do-title">{{ toDo.title }}</h3>
+  <mat-progress-bar
+    mode="determinate"
+    [value]="getFinishedPercentage()"
+    color="primary"
+  ></mat-progress-bar>
+  <div
+    class="to-do-item"
+    *ngFor="let item of toDo.items; let i = index"
+    (click)="clickToDoItem(i)"
+  >
+    <div class="check-box">
+      <div *ngIf="item.isDone" class="finished-box"></div>
+    </div>
+    <p
+      class="content"
+      [style.text-decoration]="item.isDone ? 'line-through' : ''"
+      [style.color]="item.isDone ? '#ddd' : '#eee'"
+    >
+      {{ item.content }}
+    </p>
+  </div>
+</div>
