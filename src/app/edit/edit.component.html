@@ -94,7 +94,7 @@
         [style.background]="toDos.length < 4 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'"
         [style.color]="toDos.length < 4 ? '#eee' : '#ccc'"
         [style.cursor]="toDos.length < 4 ? 'pointer' : 'not-allowed'"
-        (click)="showAddToDoItemModal = true"
+        (click)="showAddToDoItemModal = toDos.length < 4 ? true : false"
       >
         +
       </div>
