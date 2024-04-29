@@ -57,6 +57,14 @@ export class EditComponent {
     this.element = document.documentElement;
   }
 
+  ngOnInit(): void {
+    this.toDos = this.contentService.toDos;
+    this.encouragingText = this.contentService.encouragingText;
+    this.countdown.hours = this.contentService.countdown.hours();
+    this.countdown.minutes = this.contentService.countdown.minutes();
+    this.countdown.seconds = this.contentService.countdown.seconds();
+  }
+
   /**
    * 新增待辦事項
    */
@@ -126,5 +134,18 @@ export class EditComponent {
     }
 
     this.router.navigate(['/full-screen']);
+  }
+
+  /**
+   * 重置設定
+   */
+  public refreshSetting(): void {
+    this.countdown = {
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+    this.toDos = [];
+    this.encouragingText = '';
   }
 }

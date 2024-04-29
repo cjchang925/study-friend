@@ -10,6 +10,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-full-screen',
@@ -68,7 +69,7 @@ export class FullScreenComponent {
   /**
    * 倒數計時
    */
-  public countdown: moment.Duration = this.contentService.countdown;
+  public countdown: moment.Duration;
 
   /**
    * 倒數計時的字體大小，單位是 px
@@ -90,7 +91,8 @@ export class FullScreenComponent {
    */
   public showAdjustingButtonDuration: moment.Duration;
 
-  constructor(private contentService: ContentService) {
+  constructor(private contentService: ContentService, private router: Router) {
+    this.countdown = this.contentService.countdown.clone();
     this.encouragingText = this.contentService.encouragingText;
     this.showAdjustingButtonDuration = moment.duration(5, 'seconds');
 
@@ -164,6 +166,13 @@ export class FullScreenComponent {
     } else if (this.element.msRequestFullscreen) {
       this.element.msRequestFullscreen();
     }
+  }
+
+  /**
+   * 離開全螢幕模式，回到設定頁面
+   */
+  public toSetting(): void {
+    this.router.navigate(['/edit']);
   }
 
   /**

@@ -42,12 +42,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
-      bottom: 80px;
+      
     }
 
     .full-screen-button:hover {
       background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 80px;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
     }
 
     .reminder {

@@ -104,7 +104,10 @@
         [disabled]="true"
       ></app-to-do>
     </div>
-    <button class="save-button" (click)="buildScreen()">建立&nbsp;<mat-icon>check</mat-icon></button>
+    <div class="buttons">
+      <button class="save-button" (click)="buildScreen()"><mat-icon>check</mat-icon>&nbsp;建立</button>
+      <button class="save-button" (click)="refreshSetting()"><mat-icon>refresh</mat-icon>&nbsp;重置</button>
+    </div>
   </div>
 </div>
 
