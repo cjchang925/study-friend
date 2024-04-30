@@ -1,10 +1,25 @@
 import { Component, Input } from '@angular/core';
 import { ToDo } from '../../interface/to-do';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-to-do',
   templateUrl: './to-do.component.html',
   styleUrls: ['./to-do.component.scss'],
+  animations: [
+    trigger('buttonInOut', [
+      state('false', style({ opacity: 0 })),
+      state('true', style({ opacity: 1 })),
+      transition('false => true', animate('0.2s', style({ opacity: 1 }))),
+      transition('true => false', animate('0.2s', style({ opacity: 0 }))),
+    ]),
+  ]
 })
 export class ToDoComponent {
   /**
@@ -19,7 +34,27 @@ export class ToDoComponent {
   /**
    * 是否禁止點選並完成待辦事項，在設定的時候不允許使用者完成待辦事項
    */
-  @Input() public disabled = false;
+  @Input() public disabled: boolean = false;
+
+  /**
+   * 是否顯示展開或收起按鈕
+   */
+  @Input() public showMoreOrLessButton: boolean = false;
+
+  /**
+   * 待辦事項列表的最大高度，超過這個高度會顯示滾動條
+   */
+  public toDoListMaxHeight: number = 0;
+
+  /**
+   * 是否顯示完整高度
+   */
+  public showFullHeight: boolean = false;
+
+  ngOnInit(): void {
+    // 設定待辦事項列表的最大高度
+    this.toDoListMaxHeight = this.disabled ? window.innerHeight * 0.9 - 370 : window.innerHeight * 0.2
+  }
 
   /**
    * 計算待辦事項完成百分比
@@ -41,5 +76,21 @@ export class ToDoComponent {
     
     this.toDo.items[index].isDone = !this.toDo.items[index].isDone;
     this.toDo.finishedPercentage = this.getFinishedPercentage();
+  }
+
+  /**
+   * 展開全部待辦事項
+   */
+  public expandMore(): void {
+    this.showFullHeight = true;
+    this.toDoListMaxHeight = window.innerHeight * 0.9 - 120;
+  }
+
+  /**
+   * 收起部分待辦事項
+   */
+  public showLess(): void {
+    this.showFullHeight = false;
+    this.toDoListMaxHeight = window.innerHeight * 0.2;
   }
 }

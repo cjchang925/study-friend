@@ -6,19 +6,40 @@
     color="primary"
   ></mat-progress-bar>
   <div
-    class="to-do-item"
-    *ngFor="let item of toDo.items; let i = index"
-    (click)="clickToDoItem(i)"
+    class="to-do-item-container"
+    [style.max-height]="toDoListMaxHeight + 'px !important'"
   >
-    <div class="check-box">
-      <div *ngIf="item.isDone" class="finished-box"></div>
-    </div>
-    <p
-      class="content"
-      [style.text-decoration]="item.isDone ? 'line-through' : ''"
-      [style.color]="item.isDone ? '#ddd' : '#eee'"
+    <div
+      class="to-do-item"
+      *ngFor="let item of toDo.items; let i = index"
+      (click)="clickToDoItem(i)"
     >
-      {{ item.content }}
-    </p>
+      <div class="check-box">
+        <div *ngIf="item.isDone" class="finished-box"></div>
+      </div>
+      <p
+        class="content"
+        [style.text-decoration]="item.isDone ? 'line-through' : ''"
+        [style.color]="item.isDone ? '#ddd' : '#eee'"
+      >
+        {{ item.content }}
+      </p>
+    </div>
   </div>
+  <button
+    class="expand-more-button"
+    *ngIf="!disabled && !showFullHeight"
+    (click)="expandMore()"
+    [@buttonInOut]="showMoreOrLessButton"
+  >
+    <mat-icon>expand_more</mat-icon>&nbsp;展開
+  </button>
+  <button
+    class="expand-more-button"
+    *ngIf="!disabled && showFullHeight"
+    (click)="showLess()"
+    [@buttonInOut]="showMoreOrLessButton"
+  >
+    <mat-icon>expand_less</mat-icon>&nbsp;收合
+  </button>
 </div>

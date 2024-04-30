@@ -1,7 +1,20 @@
+::-webkit-scrollbar {
+  background: transparent;
+  display: none;
+}
+
 .to-do-list {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 20px 40px;
+
+  .to-do-item-container {
+    height: fit-content;
+    width: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+  }
 
   .more-items-text {
     color: #eee;
@@ -59,5 +72,27 @@
 
   .to-do-item:hover {
     cursor: pointer;
+  }
+
+  .expand-more-button {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 15px 5px 10px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    position: absolute;
+    margin-top: 30px;
+  }
+
+  .expand-more-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
   }
 }

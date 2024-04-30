@@ -11,10 +11,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   .inner-container {
     width: 80%;
-    height: 80%;
+    height: 90%;
     position: relative;
 
     .title {
@@ -186,6 +187,11 @@
       p {
         margin: 0;
       }
+    }
+
+    .more-item-text {
+      color: #aaa;
+      font-size: 16px;
     }
 
     .buttons {

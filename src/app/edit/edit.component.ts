@@ -69,11 +69,11 @@ export class EditComponent {
    * 新增待辦事項
    */
   public addToDoItem(): void {
-    if (!this.toDoItemContent || this.toDo.items.length >= 5) {
+    if (!this.toDoItemContent) {
       return;
     }
 
-    this.toDo.items.push({ content: this.toDoItemContent, isDone: false });
+    this.toDo.items.unshift({ content: this.toDoItemContent, isDone: false });
     this.toDoItemContent = '';
   }
 
@@ -106,6 +106,8 @@ export class EditComponent {
       return;
     }
 
+    // 這裡將待辦事項反轉，因為在畫面上是由上往下新增，但是在列表中是由下往上新增
+    this.toDo.items.reverse();
     this.toDos.push(this.toDo);
     this.refreshToDo();
   }

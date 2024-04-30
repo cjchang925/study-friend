@@ -1,6 +1,6 @@
 <div #firework class="firework" (mousemove)="firework.style.zIndex = '0'"></div>
 
-<div class="full-screen-page" (mousemove)="onMouseMove()">
+<div class="full-screen-page" [style.cursor]="showAdjustingButton ? 'auto' : 'none'" (mousemove)="onMouseMove()">
   <div class="center-text">
     <div class="current-time-container" cdkDrag>
       <div
@@ -72,14 +72,6 @@
         +
       </div>
     </div>
-    <div class="to-dos">
-      <app-to-do
-        cdkDrag
-        *ngFor="let toDo of toDos"
-        [toDo]="toDo"
-        [disabled]="false"
-      ></app-to-do>
-    </div>
     <div class="buttons">
       <button
       (click)="toSetting()"
@@ -99,5 +91,14 @@
     <p class="reminder" [@buttonInOut]="showAdjustingButton">
       貼心提醒：所有文字和待辦事項都可以自由的拉來拉去喔！
     </p>
+  </div>
+  <div class="to-dos">
+    <app-to-do
+      cdkDrag
+      *ngFor="let toDo of toDos"
+      [toDo]="toDo"
+      [disabled]="false"
+      [showMoreOrLessButton]="showAdjustingButton"
+    ></app-to-do>
   </div>
 </div>
