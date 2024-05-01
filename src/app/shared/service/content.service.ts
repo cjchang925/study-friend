@@ -18,7 +18,7 @@ export class ContentService {
   /**
    * 勵志小語
    */
-  public encouragingText: string = '哈囉！！';
+  public encouragingText: string = '';
 
   /**
    * 待辦事項列表
