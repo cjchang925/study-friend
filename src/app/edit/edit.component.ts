@@ -3,11 +3,26 @@ import { ToDo } from '../shared/interface/to-do';
 import { Countdown } from './edit';
 import { ContentService } from '../shared/service/content.service';
 import { Router } from '@angular/router';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
+  animations: [
+    trigger('colorModeChange', [
+      state('true', style({ background: 'rgba(255, 255, 255, 0.4)' })),
+      state('false', style({ background: 'rgba(255, 255, 255, 0.1)' })),
+      transition('true => false', animate('0.2s', style({ background: 'rgba(255, 255, 255, 0.1)' }))),
+      transition('false => true', animate('0.2s', style({ background: 'rgba(255, 255, 255, 0.4)' }))),
+    ]),
+  ],
 })
 export class EditComponent {
   /**
@@ -53,7 +68,7 @@ export class EditComponent {
    */
   private element: any;
 
-  constructor(private contentService: ContentService, private router: Router) {
+  constructor(public contentService: ContentService, private router: Router) {
     this.element = document.documentElement;
   }
 

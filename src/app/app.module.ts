@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ToDoComponent } from './shared/component/to-do/to-do.component';
 import { CdkDrag } from '@angular/cdk/drag-drop';
+import { ColorToggleComponent } from './shared/component/color-toggle/color-toggle.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
     FullScreenComponent,
     EditComponent,
     ToDoComponent,
+    ColorToggleComponent,
   ],
   imports: [
     BrowserModule,

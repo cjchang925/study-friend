@@ -91,7 +91,7 @@ export class FullScreenComponent {
    */
   public showAdjustingButtonDuration: moment.Duration;
 
-  constructor(private contentService: ContentService, private router: Router) {
+  constructor(public contentService: ContentService, private router: Router) {
     this.countdown = this.contentService.countdown.clone();
     this.encouragingText = this.contentService.encouragingText;
     this.showAdjustingButtonDuration = moment.duration(5, 'seconds');

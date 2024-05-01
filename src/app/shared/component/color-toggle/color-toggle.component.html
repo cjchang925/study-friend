@@ -1,0 +1,16 @@
+<div class="color-mode-buttons">
+  <button
+    class="color-mode-button"
+    [@colorModeChange]="contentService.colorMode === 'light'"
+    (click)="changeMode('light')"
+  >
+    <mat-icon>light_mode</mat-icon>
+  </button>
+  <button
+    class="color-mode-button"
+    [@colorModeChange]="contentService.colorMode === 'dark'"
+    (click)="changeMode('dark')"
+  >
+    <mat-icon>dark_mode</mat-icon>
+  </button>
+</div>

@@ -1,6 +1,11 @@
-<div class="edit-page">
+<div
+  class="edit-page"
+  [ngClass]="{
+    'dark-background': contentService.colorMode === 'dark',
+    'light-background': contentService.colorMode === 'light'
+  }"
+>
   <div class="inner-container">
-    <!-- <p class="title">可以選擇想要的設定，或是直接按下「建立」！</p> -->
     <p class="item-title">倒數計時</p>
     <div class="countdown-container">
       <div class="countdown-item">
@@ -80,18 +85,28 @@
         <label class="countdown-label">秒</label>
       </div>
     </div>
-    <p class="item-title">勵志小語&nbsp;<span style="font-size: 16px">{{ encouragingText.length }} / 36</span></p>
+    <p class="item-title">
+      勵志小語&nbsp;<span style="font-size: 16px"
+        >{{ encouragingText.length }} / 36</span
+      >
+    </p>
     <input
       class="encouraging-text-input"
       [(ngModel)]="encouragingText"
       autofocus
       maxlength="36"
     />
-    <p class="item-title">待辦事項&nbsp;<span style="font-size: 16px">{{ toDos.length }} / 4</span></p>
+    <p class="item-title">
+      待辦事項&nbsp;<span style="font-size: 16px">{{ toDos.length }} / 4</span>
+    </p>
     <div class="to-dos">
       <div
         class="add-todo-button"
-        [style.background]="toDos.length < 4 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'"
+        [style.background]="
+          toDos.length < 4
+            ? 'rgba(255, 255, 255, 0.3)'
+            : 'rgba(255, 255, 255, 0.1)'
+        "
         [style.color]="toDos.length < 4 ? '#eee' : '#ccc'"
         [style.cursor]="toDos.length < 4 ? 'pointer' : 'not-allowed'"
         (click)="showAddToDoItemModal = toDos.length < 4 ? true : false"
@@ -105,20 +120,33 @@
       ></app-to-do>
     </div>
     <div class="buttons">
-      <button class="save-button" (click)="buildScreen()"><mat-icon>check</mat-icon>&nbsp;建立</button>
-      <button class="save-button" (click)="refreshSetting()"><mat-icon>refresh</mat-icon>&nbsp;重置</button>
+      <app-color-toggle></app-color-toggle>
+      <button class="save-button" (click)="buildScreen()">
+        <mat-icon>check</mat-icon>&nbsp;建立
+      </button>
+      <button class="save-button" (click)="refreshSetting()">
+        <mat-icon>refresh</mat-icon>&nbsp;重置
+      </button>
     </div>
   </div>
 </div>
 
 <div class="add-todo-container" *ngIf="showAddToDoItemModal">
   <div class="add-todo-modal">
-    <p class="title">標題&nbsp;<span style="font-size: 16px;">{{ toDo.title.length }} / 16</span></p>
+    <p class="title">
+      標題&nbsp;<span style="font-size: 16px"
+        >{{ toDo.title.length }} / 16</span
+      >
+    </p>
     <mat-form-field color="accent">
       <mat-label>標題</mat-label>
       <input matInput [(ngModel)]="toDo.title" autofocus maxlength="16" />
     </mat-form-field>
-    <p class="title">待辦事項&nbsp;<span style="font-size: 16px;">{{ toDoItemContent.length }} / 20</span></p>
+    <p class="title">
+      待辦事項&nbsp;<span style="font-size: 16px"
+        >{{ toDoItemContent.length }} / 20</span
+      >
+    </p>
     <div>
       <mat-form-field style="width: 85%; margin-right: 30px" color="accent">
         <mat-label>待辦事項</mat-label>
@@ -133,7 +161,10 @@
         <mat-icon>send</mat-icon>
       </button>
     </div>
-    <div *ngFor="let item of toDo.items.slice(0, 4); let i = index" class="saved-item">
+    <div
+      *ngFor="let item of toDo.items.slice(0, 4); let i = index"
+      class="saved-item"
+    >
       <p>{{ i + 1 }}. {{ item.content }}</p>
       <button
         mat-mini-fab
@@ -145,7 +176,9 @@
       </button>
     </div>
 
-    <p class="more-item-text" *ngIf="toDo.items.length > 4">...... 以及其他 {{ toDo.items.length - 4 }} 項</p>
+    <p class="more-item-text" *ngIf="toDo.items.length > 4">
+      ...... 以及其他 {{ toDo.items.length - 4 }} 項
+    </p>
 
     <div class="buttons">
       <button

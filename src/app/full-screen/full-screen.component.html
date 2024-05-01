@@ -1,6 +1,14 @@
 <div #firework class="firework" (mousemove)="firework.style.zIndex = '0'"></div>
 
-<div class="full-screen-page" [style.cursor]="showAdjustingButton ? 'auto' : 'none'" (mousemove)="onMouseMove()">
+<div
+  class="full-screen-page"
+  [ngClass]="{
+    'dark-background': contentService.colorMode === 'dark',
+    'light-background': contentService.colorMode === 'light'
+  }"
+  [style.cursor]="showAdjustingButton ? 'auto' : 'none'"
+  (mousemove)="onMouseMove()"
+>
   <div class="center-text">
     <div class="current-time-container" cdkDrag>
       <div
@@ -12,6 +20,10 @@
       </div>
       <p
         class="current-time"
+        [ngClass]="{
+          'dark-text': contentService.colorMode === 'dark',
+          'light-text': contentService.colorMode === 'light'
+        }"
         [ngStyle]="{ 'font-size.px': currentTimeFontSize }"
       >
         {{ currentTime }}
@@ -34,6 +46,10 @@
       </div>
       <p
         class="encouraging-text"
+        [ngClass]="{
+          'dark-text': contentService.colorMode === 'dark',
+          'light-text': contentService.colorMode === 'light'
+        }"
         [ngStyle]="{ 'font-size.px': encouragingTextFontSize }"
       >
         {{ encouragingText }}
@@ -60,6 +76,10 @@
       </div>
       <p
         class="countdown-time"
+        [ngClass]="{
+          'dark-text': contentService.colorMode === 'dark',
+          'light-text': contentService.colorMode === 'light'
+        }"
         [ngStyle]="{ 'font-size.px': countdownFontSize }"
       >
         {{ getRemainingTime() }}
@@ -74,19 +94,20 @@
     </div>
     <div class="buttons">
       <button
-      (click)="toSetting()"
-      [@buttonInOut]="showAdjustingButton"
-      class="full-screen-button"
-    >
-      <mat-icon>settings</mat-icon>&nbsp;設定
-    </button>
-    <button
-      (click)="toFullScreen()"
-      [@buttonInOut]="showAdjustingButton"
-      class="full-screen-button"
-    >
-      <mat-icon>fullscreen</mat-icon>&nbsp;全螢幕
-    </button>
+        (click)="toSetting()"
+        [@buttonInOut]="showAdjustingButton"
+        class="full-screen-button"
+      >
+        <mat-icon>settings</mat-icon>&nbsp;設定
+      </button>
+      <button
+        (click)="toFullScreen()"
+        [@buttonInOut]="showAdjustingButton"
+        class="full-screen-button"
+      >
+        <mat-icon>fullscreen</mat-icon>&nbsp;全螢幕
+      </button>
+      <app-color-toggle [@buttonInOut]="showAdjustingButton"></app-color-toggle>
     </div>
     <p class="reminder" [@buttonInOut]="showAdjustingButton">
       貼心提醒：所有文字和待辦事項都可以自由的拉來拉去喔！

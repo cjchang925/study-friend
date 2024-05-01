@@ -18,12 +18,17 @@ export class ContentService {
   /**
    * 勵志小語
    */
-  public encouragingText: string = '';
+  public encouragingText: string = '哈囉！！';
 
   /**
    * 待辦事項列表
    */
   public toDos: ToDo[] = [];
+
+  /**
+   * 背景模式，light 為淺色，dark 為深色
+   */
+  public colorMode: 'light' | 'dark' = 'dark';
 
   /**
    * 設定倒數計時

@@ -1,0 +1,20 @@
+$dark-background: linear-gradient(135deg, #841337, #1d2671);
+$light-background: linear-gradient(135deg, #fac98e, #91bfff);
+$dark-background-image: linear-gradient(135deg, #c12b5a, #2e3ecb);
+$light-background-image: linear-gradient(135deg, #fea12f, #6daaff);
+
+.dark-background {
+  background: $dark-background;
+}
+
+.light-background {
+  background: $light-background;
+}
+
+.dark-text {
+  background-image: $dark-background-image;
+}
+
+.light-text {
+  background-image: $light-background-image;
+}
