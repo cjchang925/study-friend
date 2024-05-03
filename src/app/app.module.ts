@@ -18,6 +18,7 @@ import { ToDoComponent } from './shared/component/to-do/to-do.component';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { ColorToggleComponent } from './shared/component/color-toggle/color-toggle.component';
 import { NgxColorsModule } from 'ngx-colors';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NgxColorsModule } from 'ngx-colors';
     FormsModule,
     CdkDrag,
     NgxColorsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

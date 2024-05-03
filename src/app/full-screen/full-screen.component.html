@@ -1,4 +1,20 @@
-<div #firework class="firework" (mousemove)="firework.style.zIndex = '0'"></div>
+<div
+  #firework
+  class="firework"
+  *ngIf="fontLoaderService.fontLoaded"
+  (mousemove)="firework.style.zIndex = '0'"
+></div>
+
+<div
+  class="full-screen-page"
+  [ngClass]="{
+    'dark-background': contentService.colorMode === 'dark',
+    'light-background': contentService.colorMode === 'light'
+  }"
+  *ngIf="!fontLoaderService.fontLoaded"
+>
+  <mat-spinner></mat-spinner>
+</div>
 
 <div
   class="full-screen-page"
