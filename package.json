@@ -24,6 +24,7 @@
     "@fireworks-js/angular": "^2.10.7",
     "angular-cli-ghpages": "^2.0.0-beta.2",
     "moment": "^2.30.1",
+    "ngx-colors": "^3.5.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

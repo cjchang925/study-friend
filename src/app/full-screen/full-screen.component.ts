@@ -11,6 +11,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import { FontLoaderService } from '../shared/service/font-loader.service';
 
 @Component({
   selector: 'app-full-screen',
@@ -91,7 +92,28 @@ export class FullScreenComponent {
    */
   public showAdjustingButtonDuration: moment.Duration;
 
-  constructor(public contentService: ContentService, private router: Router) {
+  /**
+   * 碼表的時間
+   */
+  public stopWatchDuration: moment.Duration = moment.duration(0);
+
+  /**
+   * 碼表狀態
+   */
+  public stopWatchStatus: 'stop' | 'running' | 'pause' = 'stop';
+
+  /**
+   * 碼表的字體大小，單位是 px
+   */
+  public stopWatchFontSize: number = 44;
+
+  constructor(
+    public contentService: ContentService,
+    private router: Router,
+    public fontLoaderService: FontLoaderService
+  ) {
+    this.fontLoaderService.loadFont();
+
     this.countdown = this.contentService.countdown.clone();
     this.encouragingText = this.contentService.encouragingText;
     this.showAdjustingButtonDuration = moment.duration(5, 'seconds');
@@ -103,10 +125,16 @@ export class FullScreenComponent {
 
     this.element = document.documentElement;
 
+    // 每秒更新碼表時間
+    setInterval(() => {
+      if (this.stopWatchStatus === 'running') {
+        this.stopWatchDuration.add(1, 'second');
+      }
+    }, 1000);
+
     // 每秒檢查調整按鈕的顯示時間，如果已經是 0 秒，則隱藏按鈕，否則減少 1 秒
     setInterval(() => {
       if (this.showAdjustingButtonDuration.asSeconds() > 0) {
-        console.log(this.showAdjustingButtonDuration.asSeconds());
         this.showAdjustingButtonDuration.subtract(1, 'second');
       } else {
         this.showAdjustingButton = false;
@@ -187,6 +215,23 @@ export class FullScreenComponent {
   }
 
   /**
+   * 取得碼表時間
+   * @returns 碼表時間
+   */
+  public getStopWatchTime(): string {
+    const hours = this.stopWatchDuration.hours().toString().padStart(2, '0');
+    const minutes = this.stopWatchDuration
+      .minutes()
+      .toString()
+      .padStart(2, '0');
+    const seconds = this.stopWatchDuration
+      .seconds()
+      .toString()
+      .padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
+  /**
    * 滑鼠移動時，顯示調整文字大小的按鈕，並設定按鈕顯示時間為 3 秒
    */
   public onMouseMove(): void {
@@ -196,5 +241,25 @@ export class FullScreenComponent {
     if (this.firework.nativeElement.style.zIndex === 2) {
       this.firework.nativeElement.style.zIndex = 0;
     }
+  }
+
+  /**
+   * 改變碼表狀態
+   */
+  public toggleStopWatch(): void {
+    if (this.stopWatchStatus !== 'stop') {
+      this.stopWatchStatus = 'stop';
+      this.stopWatchDuration = moment.duration(0);
+      return;
+    }
+    this.stopWatchStatus = 'pause';
+  }
+
+  /**
+   * 重置碼表
+   */
+  public resetStopWatch(): void {
+    this.stopWatchDuration = moment.duration(0);
+    this.stopWatchStatus = 'pause';
   }
 }

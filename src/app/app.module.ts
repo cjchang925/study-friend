@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { ToDoComponent } from './shared/component/to-do/to-do.component';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { ColorToggleComponent } from './shared/component/color-toggle/color-toggle.component';
+import { NgxColorsModule } from 'ngx-colors';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ColorToggleComponent } from './shared/component/color-toggle/color-togg
     MatInputModule,
     FormsModule,
     CdkDrag,
+    NgxColorsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
