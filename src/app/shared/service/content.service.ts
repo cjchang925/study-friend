@@ -18,7 +18,7 @@ export class ContentService {
   /**
    * 勵志小語
    */
-  public encouragingText: string = 'Keep going';
+  public encouragingText: string = '';
 
   /**
    * 待辦事項列表
@@ -28,7 +28,7 @@ export class ContentService {
   /**
    * 背景模式，light 為淺色，dark 為深色
    */
-  public colorMode: 'light' | 'dark' = 'dark';
+  public colorMode: 'light' | 'dark' = 'light';
 
   /**
    * 設定倒數計時
