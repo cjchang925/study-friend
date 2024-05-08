@@ -6,7 +6,7 @@
   }"
 >
   <div class="inner-container">
-    <p class="item-title">倒數計時</p>
+    <p class="item-title" [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'">倒數計時</p>
     <div class="countdown-container">
       <div class="countdown-item">
         <div
@@ -14,6 +14,7 @@
           (click)="
             countdown.hours = countdown.hours > 0 ? countdown.hours - 1 : 23
           "
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         >
           一
         </div>
@@ -21,16 +22,18 @@
           class="countdown-input"
           [(ngModel)]="countdown.hours"
           maxlength="2"
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         />
         <div
           class="add-button"
           (click)="
             countdown.hours = countdown.hours >= 23 ? 0 : countdown.hours + 1
           "
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         >
           +
         </div>
-        <label class="countdown-label">時</label>
+        <label class="countdown-label" [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'">時</label>
       </div>
       <div class="countdown-item">
         <div
@@ -39,6 +42,7 @@
             countdown.minutes =
               countdown.minutes > 0 ? countdown.minutes - 1 : 59
           "
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         >
           一
         </div>
@@ -46,6 +50,7 @@
           class="countdown-input"
           [(ngModel)]="countdown.minutes"
           maxlength="2"
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         />
         <div
           class="add-button"
@@ -53,10 +58,11 @@
             countdown.minutes =
               countdown.minutes >= 59 ? 0 : countdown.minutes + 1
           "
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         >
           +
         </div>
-        <label class="countdown-label">分</label>
+        <label class="countdown-label" [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'">分</label>
       </div>
       <div class="countdown-item">
         <div
@@ -65,6 +71,7 @@
             countdown.seconds =
               countdown.seconds > 0 ? countdown.seconds - 1 : 59
           "
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         >
           一
         </div>
@@ -72,6 +79,7 @@
           class="countdown-input"
           [(ngModel)]="countdown.seconds"
           maxlength="2"
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         />
         <div
           class="add-button"
@@ -79,13 +87,14 @@
             countdown.seconds =
               countdown.seconds >= 59 ? 0 : countdown.seconds + 1
           "
+          [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
         >
           +
         </div>
-        <label class="countdown-label">秒</label>
+        <label class="countdown-label" [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'">秒</label>
       </div>
     </div>
-    <p class="item-title">
+    <p class="item-title" [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'">
       勵志小語&nbsp;<span style="font-size: 16px"
         >{{ encouragingText.length }} / 36</span
       >
@@ -95,8 +104,9 @@
       [(ngModel)]="encouragingText"
       autofocus
       maxlength="36"
+      [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
     />
-    <p class="item-title">
+    <p class="item-title" [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'">
       待辦事項&nbsp;<span style="font-size: 16px">{{ toDos.length }} / 4</span>
     </p>
     <div class="to-dos">
@@ -121,10 +131,10 @@
     </div>
     <div class="buttons">
       <app-color-toggle></app-color-toggle>
-      <button class="save-button" (click)="buildScreen()">
+      <button class="save-button" (click)="buildScreen()" [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'">
         <mat-icon>check</mat-icon>&nbsp;建立
       </button>
-      <button class="save-button" (click)="refreshSetting()">
+      <button class="save-button" (click)="refreshSetting()" [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'">
         <mat-icon>refresh</mat-icon>&nbsp;重置
       </button>
     </div>

@@ -3,12 +3,14 @@
     class="color-mode-button"
     [@colorModeChange]="contentService.colorMode === 'light'"
     (click)="changeMode('light')"
+    [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
   >
     <mat-icon>light_mode</mat-icon>
   </button>
   <button
     class="color-mode-button"
     [@colorModeChange]="contentService.colorMode === 'dark'"
+    [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
     (click)="changeMode('dark')"
   >
     <mat-icon>dark_mode</mat-icon>

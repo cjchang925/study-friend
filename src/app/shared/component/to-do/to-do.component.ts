@@ -7,6 +7,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { ContentService } from '../../service/content.service';
 
 @Component({
   selector: 'app-to-do',
@@ -50,6 +51,8 @@ export class ToDoComponent {
    * 是否顯示完整高度
    */
   public showFullHeight: boolean = false;
+
+  constructor(public contentService: ContentService) {}
 
   ngOnInit(): void {
     // 設定待辦事項列表的最大高度

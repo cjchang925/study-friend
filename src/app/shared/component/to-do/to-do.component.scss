@@ -24,7 +24,6 @@
   .to-do-title {
     width: 160px;
     margin: 0;
-    color: #eee;
     margin-bottom: 10px;
   }
 
@@ -46,7 +45,6 @@
     .check-box {
       width: 20px !important;
       height: 20px !important;
-      border: 2px solid #ddd;
       border-radius: 5px;
       margin-right: 10px;
       display: flex;
@@ -57,8 +55,8 @@
         font-size: 20px;
         height: 16px;
         width: 16px;
-        background-color: rgba(255, 255, 255, 0.6);
         border-radius: 3px;
+        background-color: #fff;
       }
     }
 
@@ -75,13 +73,12 @@
   }
 
   .expand-more-button {
-    background: rgba(255, 255, 255, 0.3) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
     color: #fff;
     font-size: 16px;
     padding: 5px 15px 5px 10px;
     border-radius: 30px;
     border: none;
-    cursor: pointer;
     transition: all 0.2s ease-in-out;
     margin-top: 15px;
     display: flex;
@@ -93,6 +90,7 @@
   }
 
   .expand-more-button:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    cursor: pointer;
   }
 }

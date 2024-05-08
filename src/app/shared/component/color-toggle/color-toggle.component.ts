@@ -14,7 +14,7 @@ import { ContentService } from '../../service/content.service';
   styleUrls: ['./color-toggle.component.scss'],
   animations: [
     trigger('colorModeChange', [
-      state('true', style({ background: 'rgba(255, 255, 255, 0.4)' })),
+      state('true', style({ background: 'rgba(255, 255, 255, 0.3)' })),
       state('false', style({ background: 'rgba(255, 255, 255, 0.1)' })),
       transition(
         'true => false',
@@ -22,7 +22,7 @@ import { ContentService } from '../../service/content.service';
       ),
       transition(
         'false => true',
-        animate('0.2s', style({ background: 'rgba(255, 255, 255, 0.4)' }))
+        animate('0.2s', style({ background: 'rgba(255, 255, 255, 0.3)' }))
       ),
     ]),
   ],

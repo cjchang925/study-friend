@@ -32,6 +32,7 @@
         class="subtract-button"
         (click)="currentTimeFontSize = currentTimeFontSize - 10"
         [@buttonInOut]="showAdjustingButton"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         一
       </div>
@@ -49,6 +50,7 @@
         class="add-button"
         (click)="currentTimeFontSize = currentTimeFontSize + 10"
         [@buttonInOut]="showAdjustingButton"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         +
       </div>
@@ -58,6 +60,7 @@
         class="subtract-button"
         (click)="encouragingTextFontSize = encouragingTextFontSize - 10"
         [@buttonInOut]="showAdjustingButton"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         一
       </div>
@@ -75,6 +78,7 @@
         class="add-button"
         (click)="encouragingTextFontSize = encouragingTextFontSize + 10"
         [@buttonInOut]="showAdjustingButton"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         +
       </div>
@@ -88,6 +92,7 @@
         class="subtract-button"
         (click)="countdownFontSize = countdownFontSize - 10"
         [@buttonInOut]="showAdjustingButton"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         一
       </div>
@@ -105,6 +110,7 @@
         class="add-button"
         (click)="countdownFontSize = countdownFontSize + 10"
         [@buttonInOut]="showAdjustingButton"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         +
       </div>
@@ -118,6 +124,7 @@
         class="subtract-button"
         (click)="stopWatchFontSize = stopWatchFontSize - 10"
         [@buttonInOut]="showAdjustingButton"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         一
       </div>
@@ -126,6 +133,7 @@
         (click)="resetStopWatch()"
         [@buttonInOut]="showAdjustingButton"
         *ngIf="stopWatchStatus === 'running' || stopWatchStatus === 'pause'"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         <mat-icon>stop</mat-icon>
       </div>
@@ -144,6 +152,7 @@
         (click)="stopWatchStatus = 'running'"
         [@buttonInOut]="showAdjustingButton"
         *ngIf="stopWatchStatus === 'pause'"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         <mat-icon>play_arrow</mat-icon>
       </div>
@@ -152,6 +161,7 @@
         (click)="stopWatchStatus = 'pause'"
         [@buttonInOut]="showAdjustingButton"
         *ngIf="stopWatchStatus === 'running'"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         <mat-icon>pause</mat-icon>
       </div>
@@ -159,6 +169,7 @@
         class="add-button"
         (click)="stopWatchFontSize = stopWatchFontSize + 10"
         [@buttonInOut]="showAdjustingButton"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         +
       </div>
@@ -168,6 +179,7 @@
         (click)="toSetting()"
         [@buttonInOut]="showAdjustingButton"
         class="full-screen-button"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         <mat-icon>settings</mat-icon>&nbsp;設定
       </button>
@@ -175,6 +187,7 @@
         (click)="toFullScreen()"
         [@buttonInOut]="showAdjustingButton"
         class="full-screen-button"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         <mat-icon>fullscreen</mat-icon>&nbsp;全螢幕
       </button>
@@ -183,6 +196,7 @@
         [@buttonInOut]="showAdjustingButton"
         class="full-screen-button"
         *ngIf="stopWatchStatus === 'stop'"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         <mat-icon>timer</mat-icon>&nbsp;新增碼表
       </button>
@@ -191,14 +205,12 @@
         [@buttonInOut]="showAdjustingButton"
         class="full-screen-button"
         *ngIf="stopWatchStatus !== 'stop'"
+        [style.color]="contentService.colorMode === 'dark' ? '#ccc' : '#fff'"
       >
         <mat-icon>delete_forever</mat-icon>&nbsp;移除碼表
       </button>
       <app-color-toggle [@buttonInOut]="showAdjustingButton"></app-color-toggle>
     </div>
-    <p class="reminder" [@buttonInOut]="showAdjustingButton">
-      貼心提醒：所有文字和待辦事項都可以自由的拉來拉去喔！
-    </p>
   </div>
   <div class="to-dos">
     <app-to-do

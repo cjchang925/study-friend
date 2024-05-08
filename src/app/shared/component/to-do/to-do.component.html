@@ -1,5 +1,10 @@
 <div class="to-do-list">
-  <h3 class="to-do-title">{{ toDo.title }}</h3>
+  <h3
+    class="to-do-title"
+    [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
+  >
+    {{ toDo.title }}
+  </h3>
   <mat-progress-bar
     mode="determinate"
     [value]="getFinishedPercentage()"
@@ -14,13 +19,36 @@
       *ngFor="let item of toDo.items; let i = index"
       (click)="clickToDoItem(i)"
     >
-      <div class="check-box">
-        <div *ngIf="item.isDone" class="finished-box"></div>
+      <div
+        class="check-box"
+        [style.border]="
+          contentService.colorMode === 'dark'
+            ? '2px solid #bbb'
+            : '2px solid #eee'
+        "
+      >
+        <div
+          *ngIf="item.isDone"
+          class="finished-box"
+          [style.background-color]="
+            contentService.colorMode === 'dark'
+              ? '#ddd'
+              : '#fff'
+          "
+        ></div>
       </div>
       <p
         class="content"
         [style.text-decoration]="item.isDone ? 'line-through' : ''"
-        [style.color]="item.isDone ? '#ddd' : '#eee'"
+        [style.color]="
+          contentService.colorMode === 'dark'
+            ? item.isDone
+              ? '#bbb'
+              : '#ddd'
+            : item.isDone
+            ? '#ddd'
+            : '#fff'
+        "
       >
         {{ item.content }}
       </p>
@@ -39,6 +67,7 @@
     *ngIf="!disabled && showFullHeight"
     (click)="showLess()"
     [@buttonInOut]="showMoreOrLessButton"
+    [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#555'"
   >
     <mat-icon>expand_less</mat-icon>&nbsp;收合
   </button>
