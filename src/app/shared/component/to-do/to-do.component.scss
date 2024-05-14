@@ -7,6 +7,27 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 20px 40px;
+  position: relative;
+
+  .remove-button {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .remove-button:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    cursor: pointer;
+  }
 
   .to-do-item-container {
     height: fit-content;

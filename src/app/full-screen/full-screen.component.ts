@@ -163,8 +163,6 @@ export class FullScreenComponent {
    * 開始放煙火
    */
   private startFirework(): void {
-    console.log('start firework');
-
     // adjust firework element's z-index to 2
     this.firework.nativeElement.style.zIndex = 2;
 
@@ -174,7 +172,7 @@ export class FullScreenComponent {
     // 放煙火
     fireworks.start();
 
-    // 5 秒後隱藏煙火
+    // 10 秒後隱藏煙火
     setTimeout(() => {
       fireworks.stop();
       this.firework.nativeElement.style.zIndex = 0;

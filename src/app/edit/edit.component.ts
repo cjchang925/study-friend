@@ -165,4 +165,12 @@ export class EditComponent {
     this.toDos = [];
     this.encouragingText = '';
   }
+
+  /**
+   * 移除待辦事項
+   * @param index 要移除的待辦事項的 index
+   */
+  public removeToDo(index: number): void {
+    this.toDos.splice(index, 1);
+  }
 }

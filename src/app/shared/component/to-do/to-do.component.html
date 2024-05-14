@@ -1,4 +1,7 @@
 <div class="to-do-list">
+  <div class="remove-button" *ngIf="disabled" (click)="remove()">
+    <mat-icon>close</mat-icon>
+  </div>
   <h3
     class="to-do-title"
     [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#fff'"
@@ -31,9 +34,7 @@
           *ngIf="item.isDone"
           class="finished-box"
           [style.background-color]="
-            contentService.colorMode === 'dark'
-              ? '#ddd'
-              : '#fff'
+            contentService.colorMode === 'dark' ? '#ddd' : '#fff'
           "
         ></div>
       </div>
@@ -67,7 +68,6 @@
     *ngIf="!disabled && showFullHeight"
     (click)="showLess()"
     [@buttonInOut]="showMoreOrLessButton"
-    [style.color]="contentService.colorMode === 'dark' ? '#ddd' : '#555'"
   >
     <mat-icon>expand_less</mat-icon>&nbsp;收合
   </button>

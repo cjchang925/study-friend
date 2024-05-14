@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ToDo } from '../../interface/to-do';
 import {
   animate,
@@ -23,6 +23,11 @@ import { ContentService } from '../../service/content.service';
   ]
 })
 export class ToDoComponent {
+  /**
+   * 通知 EditComponent 移除待辦事項
+   */
+  @Output() removeToDo: EventEmitter<any> = new EventEmitter();
+
   /**
    * 待辦事項
    */
@@ -95,5 +100,12 @@ export class ToDoComponent {
   public showLess(): void {
     this.showFullHeight = false;
     this.toDoListMaxHeight = window.innerHeight * 0.2;
+  }
+
+  /**
+   * 移除待辦事項
+   */
+  public remove(): void {
+    this.removeToDo.emit();
   }
 }

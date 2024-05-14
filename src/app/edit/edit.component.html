@@ -124,9 +124,10 @@
         +
       </div>
       <app-to-do
-        *ngFor="let toDo of toDos"
+        *ngFor="let toDo of toDos; let i = index"
         [toDo]="toDo"
         [disabled]="true"
+        (removeToDo)="removeToDo(i)"
       ></app-to-do>
     </div>
     <div class="buttons">
